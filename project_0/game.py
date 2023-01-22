@@ -53,6 +53,38 @@ def game_core_v2(number: int = 1) -> int:
     return count
 
 
+"""Подход 3. Бинарный поиск числа"""
+
+def game_core_v3(number: int = 1) -> int:
+    """Сначала устанавливаем любое random число и задаем min и max даипазона поиска.
+    Если загаданное число равняется одной из границ диапазона, прерываем цикл подбора.
+    Подбираем число в цикле, каждый раз скоращая диапазон для поиска напополам.
+       Функция принимает загаданное число и возвращает число попыток
+       
+    Args:
+        number (int, optional): Загаданное число. Defaults to 1.
+
+    Returns:
+        int: Число попыток
+    """
+    count = 0
+    predict = np.random.randint(1, 101)
+    min_predict = 1 # вводим min и max границы диапазона поиска 
+    max_predict = 100
+    
+    while number != predict:
+        count += 1
+        if number == min_predict or number == max_predict: 
+            break        # прерываем цикл, если загаданное число равно одной из границ
+        elif number > predict:
+            min_predict = predict
+            predict = (max_predict + predict)//2
+        elif number < predict:
+            max_predict = predict
+            predict = (predict + min_predict)//2
+            
+    return count
+
 """Функции для оценки алгоритмов"""
 
 def score_game(random_predict) -> int:
@@ -65,7 +97,7 @@ def score_game(random_predict) -> int:
         int: среднее количество попыток
     """
     count_ls = []
-    #np.random.seed(1)  # фиксируем сид для воспроизводимости
+    np.random.seed(1)  # фиксируем сид для воспроизводимости
     random_array = np.random.randint(1, 101, size=(10000))  # загадали список чисел
 
     for number in random_array:
@@ -74,8 +106,8 @@ def score_game(random_predict) -> int:
     score = int(np.mean(count_ls))
     print(f"Ваш алгоритм угадывает число в среднем за: {score} попытки")
     
-    
-"""Оценка работы алгоритмов подходов 1 и 2"""
+ 
+"""Оценка работы алгоритмов подходов"""
 #Run benchmarking to score effectiveness of all algorithms
 print('Run benchmarking for random_predict: ', end='')
 score_game(random_predict)
@@ -83,33 +115,9 @@ score_game(random_predict)
 print('Run benchmarking for game_core_v2: ', end='')
 score_game(game_core_v2)
 
-
-"""Подход 3: Вариант автора"""
-
-def game_core_v3(number: int = 1) -> int:
-    """Делим остаток напополам
-    Функция принимает загаданное число и возвращает число попыток
-    
-    Args:
-        number (int, optional): Загаданное число. Defaults to 1.
-
-    Returns:
-        int: Число попыток
-    """
-    count = 0
-    predict = np.random.randint(1, 101)
-    
-    while number != predict:
-        count += 1
-        if number > predict:
-            predict += 1
-        elif number < predict:
-            predict -= 1
-
-    return count
-
-    return count
-
-"""Оценка качества алгоритма подхода 3"""
 print('Run benchmarking for game_core_v3: ', end='')
 score_game(game_core_v3)
+
+# RUN
+if __name__ == '__main__':
+    score_game()

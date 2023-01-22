@@ -47,7 +47,9 @@
 ### **Используемый алгоритм решения**
 **Бинарный поиск числа**  
 Алгоритм, при котором каждый раз выбирается число из середины диапазона и исключается половина оставшихся чисел.  
-:mag: [Ссылка на подробное описание алгоритма](https://blog.skillfactory.ru/glossary/binarnyj-poisk/)  
+:mag: Ссылка на подробное описание алгоритма на сайте [SkillFactory](https://blog.skillfactory.ru/glossary/binarnyj-poisk/)  
+
+:arrow_up: [к оглавлению](https://github.com/Ro-Ksu/sf_data_science/tree/main/project_0/README.md#Оглавение)
 
 
 ### **Результат**

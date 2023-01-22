@@ -3,7 +3,7 @@
 ## Оглавление
 [1. Описание проекта](https://github.com/Ro-Ksu/sf_data_science/tree/main/project_0/README.md#Описание-проекта)  
 [2. Какой кейс решаем?](https://github.com/Ro-Ksu/sf_data_science/tree/main/project_0/README.md#Какой-кейс-решаем)  
-[3. Используемый алгоритм решения](https://github.com/Ro-Ksu/sf_data_science/tree/main/project_0/README.md#Тспользуемый-алгоритм-решения)  
+[3. Используемый алгоритм решения](https://github.com/Ro-Ksu/sf_data_science/tree/main/project_0/README.md#Используемый-алгоритм-решения)  
 [4. Результат](https://github.com/Ro-Ksu/sf_data_science/tree/main/project_0/README.md#Результат)  
 [5. Выводы](https://github.com/Ro-Ksu/sf_data_science/tree/main/project_0/README.md#Выводы)
 <!---[3. Краткая информация о данных](https://github.com/Ro-Ksu/sf_data_science/tree/main/project_0/README.md#Краткая-информация-о-данных)  

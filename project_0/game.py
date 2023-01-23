@@ -40,7 +40,7 @@ def game_core_v2(number: int = 1) -> int:
     Returns:
         int: Число попыток
     """
-    count = 0
+    count = 1
     predict = np.random.randint(1, 101)
     
     while number != predict:
@@ -67,15 +67,19 @@ def game_core_v3(number: int = 1) -> int:
     Returns:
         int: Число попыток
     """
-    count = 0
+    count = 1
     predict = np.random.randint(1, 101)
     min_predict = 1 # вводим min и max границы диапазона поиска 
     max_predict = 100
     
     while number != predict:
         count += 1
-        if number == min_predict or number == max_predict: 
-            break        # прерываем цикл, если загаданное число равно одной из границ
+        if number == min_predict:
+            count +=1 
+            break   # прерываем цикл, если загаданное число равно одной из границ
+        elif number == max_predict:
+            count += 1
+            break 
         elif number > predict:
             min_predict = predict
             predict = (max_predict + predict)//2
@@ -84,6 +88,7 @@ def game_core_v3(number: int = 1) -> int:
             predict = (predict + min_predict)//2
             
     return count
+
 
 """Функции для оценки алгоритмов"""
 
@@ -104,19 +109,10 @@ def score_game(random_predict) -> int:
         count_ls.append(random_predict(number))
 
     score = int(np.mean(count_ls))
-    print(f"Ваш алгоритм угадывает число в среднем за: {score} попытки")
     
- 
-"""Оценка работы алгоритмов подходов"""
-#Run benchmarking to score effectiveness of all algorithms
-print('Run benchmarking for random_predict: ', end='')
-score_game(random_predict)
+    print(f"Ваш алгоритм угадывает число в среднем за: {score} попыток")
+    return score
 
-print('Run benchmarking for game_core_v2: ', end='')
-score_game(game_core_v2)
-
-print('Run benchmarking for game_core_v3: ', end='')
-score_game(game_core_v3)
 
 # RUN
 if __name__ == '__main__':
